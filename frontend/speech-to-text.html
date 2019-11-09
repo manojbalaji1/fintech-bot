@@ -13,7 +13,7 @@
     let recognition = new window.SpeechRecognition();
     recognition.interimResults = true;
     recognition.maxAlternatives = 10;
-    recognition.continuous = true;
+    recognition.continuous = false;
     recognition.onresult = (event) => {
       let interimTranscript = '';
       for (let i = event.resultIndex, len = event.results.length; i < len; i++) {

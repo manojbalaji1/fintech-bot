@@ -3,12 +3,13 @@ from bot import Bot
 app = Flask(__name__)
 ai_bot = Bot()
 
-@app.route('/question', methods=['GET','POST'])
+
+@app.route('/question', methods=['GET'])
 def hello_world():
-    test = request.get_json()
-    # answer = ai_bot.answer_user_question(test["question"])
-    print(test)
-    return jsonify({'message': '{}'.format(test)})
+    message = request.args.get('message', default = '*', type = str)
+    answer = ai_bot.answer_user_question(message)
+    print(answer)
+    return jsonify({'message': '{}'.format(answer)})
 
 
 if __name__ == "__main__":
