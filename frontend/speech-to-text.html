@@ -5,28 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Speech Recording</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="./script.js"></script>
 </head>
 <body>
-  <script>
-    window.SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition;
-    let finalTranscript = '';
-    let recognition = new window.SpeechRecognition();
-    recognition.interimResults = true;
-    recognition.maxAlternatives = 10;
-    recognition.continuous = false;
-    recognition.onresult = (event) => {
-      let interimTranscript = '';
-      for (let i = event.resultIndex, len = event.results.length; i < len; i++) {
-        let transcript = event.results[i][0].transcript;
-        if (event.results[i].isFinal) {
-          finalTranscript += transcript;
-        } else {
-          interimTranscript += transcript;
-        }
-      }
-      document.querySelector('body').innerHTML = finalTranscript + '<i style="color:#ddd;">' + interimTranscript + '</>';
-    }
-    recognition.start();
-  </script>
+  <div class="container" style="margin: 200px 350px">
+    <div class="row">
+      <div class="col-md">
+
+        <div class="panel panel-info" style="max-width: 600px; margin-left: 100px">
+          <div class="panel-heading">Chat with STACY</div>
+          <div class="panel-body">
+            <div id="main" style="padding-left: 220px">
+            <!-- <button class="btn btn-lg btn-success" onclick="record()" id="recordButton">Record</button> -->
+                <input type="button" value="Record" class="btn btn-lg btn-success" onclick="record()" id="recordButton">
+            </div>
+            <div id="speech" style="padding-left: 200px; padding-top: 30px"></div>
+            <div id="idiot" style="padding-left: 200px; padding-top: 10px"></div>    
+          </div>
+          <div class="panel-footer">Fintech Bot</div>
+        </div>
+            
+      </div>
+    </div>
+      
+  </div>
 </body>
 </html>

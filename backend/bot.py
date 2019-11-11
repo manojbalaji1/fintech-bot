@@ -56,7 +56,7 @@ import numpy as np  # linear algebra
 from fuzzywuzzy import fuzz, process
 import pandas as pd  # data processing, CSV file I/O (e.g. pd.read_csv)
 import os
-
+from funds import mutual_funds
 
 class Bot(object):
     def __init__(self):
@@ -179,7 +179,8 @@ class Bot(object):
                          "travel expenses this week ?": 85,
                          "travel expenses this month ?": 86,
                          "travel expenses last week ?": 87,
-                         "travel expenses last month ?": 88
+                         "travel expenses last month ?": 88,
+                         "give me mutual funds to invest ?":89
 
                          }
 
@@ -280,6 +281,9 @@ class Bot(object):
             # print ("\n\nResponse: \n\nI will execute pandas statement 10")
             answer = 10999
             return answer
+        elif question_index == 89:
+
+            return mutual_funds()
         else:
             # print ("\n\nImplementation on the way\n")
             answer = -1.00010001
